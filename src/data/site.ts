@@ -4,7 +4,7 @@
 export const site = {
   name: 'Axenova Studios',
   // Replace with your real contact email, e.g. 'contact@yourdomain.com'.
-  contactEmail: 'YOUR_CONTACT_EMAIL',
+  contactEmail: 'hammaduddin54@gmail.com',
   // Optional: an official studio social profile. Leave both empty to hide the link.
   socialUrl: '',
   socialLabel: '',
