@@ -19,9 +19,7 @@ export interface Game {
   /** Your Google Play listing URL. Leave empty until the game is public. */
   storeUrl: string;
   /** Add real screenshots here once you have them. */
-   screenshots: [
-     { src: 'screenshots/arrowflow-1.jpeg', alt: 'ArrowFlow puzzle level with winding arrow paths' },
-   ],
+  screenshots: Screenshot[];
 }
 
 export const games: Game[] = [
@@ -32,8 +30,8 @@ export const games: Game[] = [
       'Discover ArrowFlow, a grid-based puzzle game that challenges players to think strategically, solve intricate paths, and progress through increasingly engaging levels.',
     status: 'coming-soon',
     storeUrl: '',
-      screenshots: [
-     { src: 'screenshots/arrowflow-1.jpeg', alt: 'ArrowFlow puzzle level with winding arrow paths' },
-   ],
+    screenshots: [
+      { src: 'screenshots/arrowflow-1.jpeg', alt: 'ArrowFlow puzzle level with winding arrow paths' },
+    ],
   },
 ];
