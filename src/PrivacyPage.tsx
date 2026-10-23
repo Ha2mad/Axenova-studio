@@ -1,13 +1,9 @@
-import type { ReactNode } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { site } from './data/site';
 
-// Each Todo block below is a placeholder you must replace after verifying
-// what your game and website actually do. Run "npm run check" to list them.
-function Todo({ children }: { children: ReactNode }) {
-  return <mark className="todo">[TO COMPLETE: {children}]</mark>;
-}
+const githubPrivacyUrl =
+  'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement';
 
 export function PrivacyPage() {
   return (
@@ -18,61 +14,80 @@ export function PrivacyPage() {
         <div className="container legal__inner">
           <h1 className="legal__title">Privacy Policy</h1>
           <p className="legal__meta">
-            Last updated: <Todo>date</Todo>
+            Last updated: October 23, 2026
           </p>
 
           <h2>1. Introduction</h2>
           <p>
             This Privacy Policy explains how {site.name} (&ldquo;we&rdquo;, &ldquo;us&rdquo;) handles
             information in connection with our website and our mobile games, including ArrowFlow.
+            ArrowFlow is an Android game published on Google Play under the package name
+            com.AxnovaStudios.ArrowFlow. The game is fully offline.
           </p>
 
           <h2>2. Information we collect</h2>
           <p>
-            <Todo>
-              List every type of information the game and website actually collect, for example
-              device identifiers, gameplay data, or crash reports. State that no data is collected
-              only after you have verified this.
-            </Todo>
+            ArrowFlow does not collect personal data. It does not use analytics, crash reporting,
+            advertising SDKs, accounts, or network services, and it does not send information to us
+            or to anyone else. Game progress is stored only on your device. That progress is not
+            transmitted, and it is removed when you uninstall ArrowFlow or clear the app&rsquo;s data.
+            This website is a static site hosted on GitHub Pages. The site does not collect personal
+            data, does not set cookies, and does not run analytics or other tracking scripts. GitHub,
+            which hosts the site, may process technical data such as IP addresses in server logs, as
+            described in{' '}
+            <a href={githubPrivacyUrl}>GitHub&rsquo;s General Privacy Statement</a>.
           </p>
 
           <h2>3. How we use information</h2>
           <p>
-            <Todo>Describe each purpose for which the information above is used.</Todo>
+            We do not collect personal data through ArrowFlow or this website, so we do not use
+            personal data for analytics, advertising, accounts, or any other purpose. Progress stored
+            by ArrowFlow is used only on your device so the game can remember where you left off. It
+            is not sent to us.
           </p>
 
           <h2>4. Third-party services</h2>
           <p>
-            <Todo>
-              Name every third-party SDK or service used by the game or website (analytics,
-              advertising, crash reporting, hosting, and so on) and link to each provider&rsquo;s own
-              privacy policy. If there are none, say so only after verifying.
-            </Todo>
+            ArrowFlow does not include third-party analytics, advertising, crash reporting, account,
+            or other network services. This website does not include analytics, advertising, or
+            tracking scripts. The site is hosted on GitHub Pages. GitHub may process technical data
+            such as IP addresses in server logs, as described in{' '}
+            <a href={githubPrivacyUrl}>GitHub&rsquo;s General Privacy Statement</a>.
           </p>
 
           <h2>5. Advertising</h2>
           <p>
-            <Todo>Explain whether the game shows ads and which providers are involved, or remove this section.</Todo>
+            ArrowFlow does not show ads. This website does not show ads. No advertising providers
+            are used.
           </p>
 
           <h2>6. Children&rsquo;s privacy</h2>
           <p>
-            <Todo>State the minimum age your game is intended for and how you handle information from children.</Todo>
+            ArrowFlow is intended for people aged 16 and older. It is not directed at children. We
+            do not collect personal data from anyone, including children.
           </p>
 
           <h2>7. Data retention and deletion</h2>
           <p>
-            <Todo>Explain how long data is kept and how a person can request deletion.</Todo>
+            We do not keep personal data from ArrowFlow or from this website, because we do not
+            collect it. Game progress stays only on your device and is removed when you uninstall
+            ArrowFlow or clear the app&rsquo;s data. We do not keep a copy of it.
           </p>
 
           <h2>8. Your choices and rights</h2>
           <p>
-            <Todo>Describe the choices available to players and any rights that apply in your regions.</Todo>
+            You can delete the progress stored on your device by clearing ArrowFlow&rsquo;s data or
+            uninstalling the app. Because we do not collect personal data, we do not hold an account
+            or profile that we can provide, correct, or erase. If you have a question about this
+            policy, contact us using the address below.
           </p>
 
           <h2>9. Security</h2>
           <p>
-            <Todo>Briefly describe the measures you take to protect information, without overstating them.</Todo>
+            ArrowFlow does not transmit personal data, and we do not store player information on a
+            server. Progress remains on your device and is subject to that device&rsquo;s own
+            protections. This website is a set of static pages and does not collect information. We
+            do not claim that your device, or GitHub Pages, is free of security risk.
           </p>
 
           <h2>10. Changes to this policy</h2>
