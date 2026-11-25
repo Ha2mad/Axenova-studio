@@ -14,14 +14,16 @@ export default function App() {
         <div className="hero-copy">
           <p className="eyebrow">{t('Axenova Studios · Independent games', 'Axenova Studios · 独立游戏')}</p>
           <h1>{featured.title}</h1>
-          <p className="hero-tagline">{t('Find the right move.', '找出正确的一步。')}</p>
-          <p className="lead">{featured.description[language]}</p>
+          <p className="hero-tagline">{t('Clear the board, one arrow at a time.', '逐个移出箭头，清空棋盘。')}</p>
+        </div>
+        {featured.heroGameplay && <GameplayHero gameplay={featured.heroGameplay} />}
+        <div className="hero-cta">
           <div className="actions">
             {featured.storeUrl && <a className="button primary" href={featured.storeUrl}>{t('Get it on Google Play', '在 Google Play 下载')}</a>}
             {featured.detailPath && <a className="button secondary" href={featured.detailPath}>{t('Explore ArrowFlow', '探索 ArrowFlow')}</a>}
           </div>
+          <p>{t('Free puzzle game for Android', '免费安卓解谜游戏')}</p>
         </div>
-        {featured.heroGameplay && <GameplayHero gameplay={featured.heroGameplay} />}
       </div>
     </section>
 
