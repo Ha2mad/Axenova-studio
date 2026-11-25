@@ -1,17 +1,16 @@
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import { Layout } from './components/Layout';
+import { useLanguage } from './language';
 import { site } from './data/site';
 
 const githubPrivacyUrl =
   'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement';
 
 export function PrivacyPage() {
+  const { language } = useLanguage();
   return (
-    <>
-      <a className="skip-link" href="#main">Skip to content</a>
-      <Header root="../" />
-      <main id="main" className="legal">
-        <div className="container legal__inner">
+    <Layout page="privacy" root="../">
+      <article className="legal">
+        {language === 'zh-CN' ? <ChinesePolicy /> : <div className="container legal__inner">
           <h1 className="legal__title">Privacy Policy</h1>
           <p className="legal__meta">
             Last updated: October 23, 2026
@@ -101,9 +100,39 @@ export function PrivacyPage() {
             If you have questions about this Privacy Policy, contact us at{' '}
             <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
           </p>
-        </div>
-      </main>
-      <Footer root="../" />
-    </>
+        </div>}
+      </article>
+    </Layout>
   );
+}
+
+
+function ChinesePolicy() {
+  const githubPolicy = <a href={githubPrivacyUrl}>GitHub 通用隐私声明</a>;
+  return <div className="container legal__inner">
+    <h1 className="legal__title">隐私政策</h1>
+    <p className="legal__meta">最后更新日期：2026 年 10 月 23 日</p>
+    <h2>1. 简介</h2>
+    <p>本隐私政策说明 Axenova Studios（“我们”）如何处理与本网站及我们的移动游戏（包括 ArrowFlow）相关的信息。ArrowFlow 是一款在 Google Play 上发布的安卓游戏，应用包名为 com.AxnovaStudios.ArrowFlow。该游戏可完全离线运行。</p>
+    <h2>2. 我们收集的信息</h2>
+    <p>ArrowFlow 不收集个人数据。游戏不使用分析、崩溃报告、广告 SDK、账号或网络服务，也不会向我们或任何第三方发送信息。游戏进度仅保存在设备上，不会传输。卸载 ArrowFlow 或清除应用数据后，进度将被删除。本网站由 GitHub Pages 托管，为静态网站，不收集个人数据、不设置 Cookie，也不运行分析或其他跟踪脚本。GitHub 可能在服务器日志中处理 IP 地址等技术数据，详情请参阅{githubPolicy}。</p>
+    <h2>3. 信息的使用</h2>
+    <p>由于我们不通过 ArrowFlow 或本网站收集个人数据，因此不会将个人数据用于分析、广告、账号或其他用途。ArrowFlow 保存的进度仅用于在设备上记录游戏进度，不会发送给我们。</p>
+    <h2>4. 第三方服务</h2>
+    <p>ArrowFlow 不包含第三方分析、广告、崩溃报告、账号或其他网络服务。本网站不包含分析、广告或跟踪脚本。本网站由 GitHub Pages 托管。GitHub 可能在服务器日志中处理 IP 地址等技术数据，详情请参阅{githubPolicy}。</p>
+    <h2>5. 广告</h2>
+    <p>ArrowFlow 和本网站均不展示广告，也不使用广告服务提供商。</p>
+    <h2>6. 儿童隐私</h2>
+    <p>ArrowFlow 面向 16 岁及以上人群，不以儿童为目标用户。我们不收集任何人的个人数据，包括儿童。</p>
+    <h2>7. 数据保留与删除</h2>
+    <p>我们不收集或保留来自 ArrowFlow 或本网站的个人数据。游戏进度仅保存在你的设备上，卸载 ArrowFlow 或清除应用数据后即会删除。我们不保留副本。</p>
+    <h2>8. 你的选择与权利</h2>
+    <p>你可以清除 ArrowFlow 的应用数据或卸载应用，以删除保存在设备上的进度。由于我们不收集个人数据，因此没有可以提供、更正或删除的账号或个人资料。如有任何疑问，请使用下方邮箱与我们联系。</p>
+    <h2>9. 安全</h2>
+    <p>ArrowFlow 不传输个人数据，我们也不会在服务器上存储玩家信息。进度保存在设备上，受设备自身的安全措施保护。本网站由静态页面组成，不收集信息。我们不保证你的设备或 GitHub Pages 完全没有安全风险。</p>
+    <h2>10. 政策变更</h2>
+    <p>我们可能不时更新本隐私政策。此页面顶部的“最后更新日期”表示最近一次修订的时间。</p>
+    <h2>11. 联系我们</h2>
+    <p>如对本隐私政策有疑问，请发送邮件至 <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>。</p>
+  </div>;
 }

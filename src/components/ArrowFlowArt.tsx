@@ -1,6 +1,6 @@
 // Original abstract key art in the spirit of ArrowFlow: long lines that turn
 // at right angles and end in arrowheads. Decorative only.
-// Replace it with real screenshots in src/data/games.ts when you have them.
+
 
 type Dir = 0 | 90 | 180 | 270; // 0 = right, 90 = down, 180 = left, 270 = up
 
@@ -39,14 +39,14 @@ export function ArrowFlowArt() {
     <svg
       className="arrowart"
       viewBox="0 0 300 400"
-      role="img"
-      aria-label="Abstract illustration of winding arrow paths"
+      aria-hidden="true"
+      focusable="false"
     >
       {lines.map((l, i) => {
         const color = l.hi ? '#3DE0FF' : '#6F8FD6';
         const [x, y, dir] = l.head;
         return (
-          <g key={i}>
+          <g key={i} className={l.hi ? 'path-lit' : undefined}>
             <path
               d={l.d}
               fill="none"
