@@ -1,4 +1,5 @@
 import { Layout } from './components/Layout';
+import { ArrowDemo } from './components/ArrowDemo';
 import { GameplayHero } from './components/GameplayHero';
 import { games } from './data/games';
 import { site } from './data/site';
@@ -12,23 +13,42 @@ export default function App() {
     <section id="home" className="hero studio-hero">
       <div className="container hero-inner">
         <div className="hero-copy">
-          <p className="eyebrow">{t('Axenova Studios · Independent games', 'Axenova Studios · 独立游戏')}</p>
+          <p className="eyebrow studio-kicker"><span />{t('AXENOVA STUDIOS / FEATURED GAME', 'AXENOVA STUDIOS / 主打游戏')}</p>
           <h1>{featured.title}</h1>
-          <p className="hero-tagline">{t('Clear the board, one arrow at a time.', '逐个移出箭头，清空棋盘。')}</p>
+          <p className="hero-tagline">{t('Every arrow has a way out.', '每个箭头都有一条出路。')}</p>
+          <p className="hero-description">{t('Tap arrows to slide them off the board. The trick is finding which one goes first.', '轻点箭头，让它们滑出棋盘。关键是找出哪个箭头该先走。')}</p>
         </div>
         {featured.heroGameplay && <GameplayHero gameplay={featured.heroGameplay} />}
         <div className="hero-cta">
           <div className="actions">
-            {featured.storeUrl && <a className="button primary" href={featured.storeUrl}>{t('Get it on Google Play', '在 Google Play 下载')}</a>}
-            {featured.detailPath && <a className="button secondary" href={featured.detailPath}>{t('Explore ArrowFlow', '探索 ArrowFlow')}</a>}
+            {featured.storeUrl && <a className="button primary" href={featured.storeUrl}>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3v18l15-9L5 3Z" /></svg>
+              {t('Get it on Google Play', '在 Google Play 下载')}
+            </a>}
+            <a className="button secondary" href="#try-puzzle">{t('Try a puzzle', '试玩谜题')} <span aria-hidden="true">↓</span></a>
           </div>
-          <p>{t('Free puzzle game for Android', '免费安卓解谜游戏')}</p>
+          <ul className="hero-facts" aria-label={t('Game highlights', '游戏亮点')}>
+            <li>{t('Free on Android', '安卓免费')}</li>
+            <li>{t('100 puzzles', '100 个关卡')}</li>
+            <li>{t('Plays offline', '支持离线')}</li>
+          </ul>
         </div>
       </div>
     </section>
 
+    <section id="try-puzzle" className="section container puzzle-section" tabIndex={-1}>
+      <div className="puzzle-copy">
+        <p className="eyebrow">{t('The ArrowFlow mini puzzle', 'ArrowFlow 迷你谜题')}</p>
+        <h2>{t('Which arrow goes first?', '哪个箭头先走？')}</h2>
+        <p>{t('Tap an arrow to send it in the direction it points. If another arrow is in the way, clear that one first. No download needed.', '轻点箭头，让它沿指向滑出。如果路上有其他箭头，先把挡路的箭头移开。无需下载。')}</p>
+        {featured.detailPath && <a className="puzzle-link" href={featured.detailPath}>{t('Explore the full game', '探索完整版')} <span aria-hidden="true">↗</span></a>}
+      </div>
+      <ArrowDemo />
+    </section>
+
     <section id="games" className="section container" tabIndex={-1}>
-      <h2>{t('Our games', '我们的游戏')}</h2>
+      <p className="eyebrow">{t('The game library', '游戏库')}</p>
+      <h2>{t('Games by Axenova', 'Axenova 的游戏')}</h2>
       <div className="library">
         {games.map(game => <article className="game-card" key={game.id}>
           <div className="card-copy">
