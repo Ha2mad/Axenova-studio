@@ -1,6 +1,11 @@
 export type Language = 'en' | 'zh-CN';
 export type Localized = Record<Language, string>;
 
+interface Screenshot {
+  src: string;
+  alt: Localized;
+}
+
 export interface Game {
   id: string;
   title: string;
@@ -10,9 +15,13 @@ export interface Game {
   detailPath?: string;
   icon?: string;
   trailerUrl?: string;
-  screenshots: { src: string; alt: Localized }[];
+  screenshots: Screenshot[];
+  heroGameplay?: [Screenshot, Screenshot];
   updates: { date: string; title: Localized; changes: Localized[] }[];
 }
+
+const firstLevel = { en: 'Level 1 with a spiral path and open arrows', 'zh-CN': '第 1 关，包含螺旋路线和可移出的箭头' };
+const secondLevel = { en: 'Level 2 with a denser maze of arrows', 'zh-CN': '第 2 关，箭头迷宫更加密集' };
 
 export const games: Game[] = [
   {
@@ -26,9 +35,13 @@ export const games: Game[] = [
     storeUrl: 'https://play.google.com/store/apps/details?id=com.AxnovaStudios.ArrowFlow',
     detailPath: 'games/arrowflow/',
     icon: 'arrowflow/icon.webp',
+    heroGameplay: [
+      { src: 'arrowflow/gameplay-1.webp', alt: firstLevel },
+      { src: 'arrowflow/gameplay-2.webp', alt: secondLevel },
+    ],
     screenshots: [
-      { src: 'arrowflow/screen-1.webp', alt: { en: 'Level 1 with a spiral path and open arrows', 'zh-CN': '第 1 关，包含螺旋路线和可移出的箭头' } },
-      { src: 'arrowflow/screen-2.webp', alt: { en: 'Level 2 with a denser maze of arrows', 'zh-CN': '第 2 关，箭头迷宫更加密集' } },
+      { src: 'arrowflow/screen-1.webp', alt: firstLevel },
+      { src: 'arrowflow/screen-2.webp', alt: secondLevel },
       { src: 'arrowflow/screen-3.webp', alt: { en: 'Level selection screen with a grid of puzzles', 'zh-CN': '关卡选择界面，以网格展示谜题' } },
       { src: 'arrowflow/screen-4.webp', alt: { en: 'Cleared board with options to continue or replay', 'zh-CN': '棋盘清空后可继续或重玩' } },
     ],

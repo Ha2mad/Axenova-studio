@@ -20,7 +20,7 @@ npm run check
 ## Update content
 
 - Add library entries, localized descriptions, screenshots, and dated release notes in `src/data/games.ts`. For a new detail page, register its HTML entry in `vite.config.ts`.
-- ArrowFlow's icon and screenshots in `public/arrowflow/` come from its official Google Play listing. The share card uses those assets.
+- ArrowFlow's icon and screenshots in `public/arrowflow/` come from its official Google Play listing. The share card uses those assets. The two gameplay hero images crop the in-game display from the first two official store screenshots.
 - Add the confirmed gameplay trailer URL in `src/data/games.ts` and verified YouTube and Bilibili channel URLs in `src/data/site.ts`. The corresponding links render when configured.
 - The existing privacy policy is at `privacy-policy/index.html`. Maintain both language versions in `src/PrivacyPage.tsx`.
 

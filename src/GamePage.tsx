@@ -1,5 +1,5 @@
 import { Layout } from './components/Layout';
-import { ArrowFlowArt } from './components/ArrowFlowArt';
+import { GameplayHero } from './components/GameplayHero';
 import { games } from './data/games';
 import { site } from './data/site';
 import { useLanguage } from './language';
@@ -28,7 +28,7 @@ export function GamePage() {
             <a className="button secondary" href="#install">{t('Installation guide', '安装指南')}</a>
           </div>
         </div>
-        <div className="hero-visual" aria-hidden="true"><ArrowFlowArt /></div>
+        {game.heroGameplay && <GameplayHero gameplay={game.heroGameplay} root={root} />}
       </div>
     </section>
 
@@ -42,12 +42,9 @@ export function GamePage() {
           </a>
         </li>)}
       </ul>
-      <details className="disclosure">
-        <summary>{t('Gameplay trailer', '实机预告片')}</summary>
-        <p>{game.trailerUrl
-          ? <a href={game.trailerUrl}>{t('Watch the gameplay trailer', '观看实机预告片')}</a>
-          : t('A gameplay trailer is currently unavailable.', '实机预告片暂不可用。')}</p>
-      </details>
+      {game.trailerUrl && <a className="button secondary trailer-link" href={game.trailerUrl}>
+        {t('Watch the gameplay trailer', '观看实机预告片')}
+      </a>}
     </section>
 
     <section className="section studio" aria-labelledby="features">
