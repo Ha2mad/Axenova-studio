@@ -1,5 +1,5 @@
 import { Layout } from './components/Layout';
-import { ArrowFlowArt } from './components/ArrowFlowArt';
+import { GameplayHero } from './components/GameplayHero';
 import { games } from './data/games';
 import { site } from './data/site';
 import { useLanguage } from './language';
@@ -9,23 +9,23 @@ export default function App() {
   const featured = games[0];
 
   return <Layout root="" page="home">
-    <section id="home" className="hero">
+    <section id="home" className="hero studio-hero">
       <div className="container hero-inner">
         <div className="hero-copy">
-          <p className="eyebrow"><span />{t('Independent game studio', '独立游戏工作室')}</p>
-          <h1>{t('Small studio.', '独立小团队。')}<br /><em>{t('Smart play.', '用心做游戏。')}</em></h1>
-          <p className="lead">{t('We make thoughtful mobile games with simple controls and puzzles that reward a second look.', '我们打造用心设计的移动游戏，以简单操作带来值得反复思考的谜题。')}</p>
+          <p className="eyebrow">{t('Axenova Studios · Independent games', 'Axenova Studios · 独立游戏')}</p>
+          <h1>{featured.title}</h1>
+          <p className="hero-tagline">{t('Find the right move.', '找出正确的一步。')}</p>
+          <p className="lead">{featured.description[language]}</p>
           <div className="actions">
-            <a className="button primary" href="#games">{t('Explore our games', '探索游戏')}</a>
-            <a className="button secondary" href="#about">{t('Meet the studio', '了解工作室')}</a>
+            {featured.storeUrl && <a className="button primary" href={featured.storeUrl}>{t('Get it on Google Play', '在 Google Play 下载')}</a>}
+            {featured.detailPath && <a className="button secondary" href={featured.detailPath}>{t('Explore ArrowFlow', '探索 ArrowFlow')}</a>}
           </div>
         </div>
-        <div className="hero-visual" aria-hidden="true"><ArrowFlowArt /></div>
+        {featured.heroGameplay && <GameplayHero gameplay={featured.heroGameplay} />}
       </div>
     </section>
 
     <section id="games" className="section container" tabIndex={-1}>
-      <p className="eyebrow">{t('Game library', '游戏库')}</p>
       <h2>{t('Our games', '我们的游戏')}</h2>
       <div className="library">
         {games.map(game => <article className="game-card" key={game.id}>
@@ -40,7 +40,7 @@ export default function App() {
             </div>
           </div>
           {game.screenshots.length > 0 && <div className="card-media">
-            {game.screenshots.slice(0, 2).map(shot => <img key={shot.src} src={shot.src} alt={shot.alt[language]} width="506" height="900" loading="lazy" decoding="async" />)}
+            {game.screenshots.slice(-2).map(shot => <img key={shot.src} src={shot.src} alt={shot.alt[language]} width="506" height="900" loading="lazy" decoding="async" />)}
           </div>}
         </article>)}
       </div>
@@ -57,7 +57,6 @@ export default function App() {
     </section>
 
     <section id="news" className="section container" tabIndex={-1}>
-      <p className="eyebrow">{t('Development updates', '开发动态')}</p>
       <h2>{t('Studio news', '工作室新闻')}</h2>
       <article className="news-card">
         <div>
