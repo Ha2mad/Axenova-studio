@@ -1,5 +1,4 @@
 import { Layout } from './components/Layout';
-import { GameplayHero } from './components/GameplayHero';
 import { games } from './data/games';
 import { site } from './data/site';
 import { useLanguage } from './language';
@@ -13,43 +12,48 @@ export function GamePage() {
 
   return <Layout root={root} page="game">
     <section className="hero game-hero">
-      <div className="container hero-inner">
-        <div className="hero-copy">
-          <a className="back" href={root + '#games'}>{t('All games', '所有游戏')}</a>
-          {game.icon && <img className="game-icon" src={root + game.icon} alt="" width="82" height="82" />}
-          <p className="release"><span />{t('Available now on Android', '安卓版现已发布')}</p>
-          <h1>{game.title}</h1>
-          <p className="lead">{game.description[language]}</p>
-          <ul className="tags">
-            <li>{t('Free to play', '免费游玩')}</li><li>{t('Currently ad-free', '目前无广告')}</li><li>{t('Offline', '离线游玩')}</li>
-          </ul>
+      <div className="container">
+        <a className="back" href={root + '#games'}>{t('All games', '所有游戏')}</a>
+        <div className="game-heading">
+          <div className="game-identity">
+            {game.icon && <img className="game-icon" src={root + game.icon} alt="" width="80" height="80" />}
+            <div>
+              <p className="release"><span />{t('Available on Android', '现已登陆安卓')}</p>
+              <h1>{game.title}</h1>
+            </div>
+          </div>
           <div className="actions">
             <a className="button primary" href={game.storeUrl}>{t('Get it on Google Play', '在 Google Play 下载')}</a>
             <a className="button secondary" href="#install">{t('Installation guide', '安装指南')}</a>
           </div>
         </div>
-        {game.heroGameplay && <GameplayHero gameplay={game.heroGameplay} root={root} />}
-      </div>
-    </section>
 
-    <section className="section container" aria-labelledby="gameplay">
-      <p className="eyebrow">{t('Gameplay', '实机画面')}</p>
-      <h2 id="gameplay">{t('A look at ArrowFlow', '看看 ArrowFlow')}</h2>
-      <ul className="gallery">
-        {game.screenshots.map(shot => <li key={shot.src}>
-          <a href={root + shot.src} aria-label={t('Open screenshot: ', '查看截图：') + shot.alt[language]}>
-            <img src={root + shot.src} alt={shot.alt[language]} width="506" height="900" loading="lazy" decoding="async" />
-          </a>
-        </li>)}
-      </ul>
-      {game.trailerUrl && <a className="button secondary trailer-link" href={game.trailerUrl}>
-        {t('Watch the gameplay trailer', '观看实机预告片')}
-      </a>}
+        <section className="game-gallery" aria-labelledby="gameplay">
+          <h2 id="gameplay">{t('Gameplay gallery', '实机截图')}</h2>
+          <ul className="gallery">
+            {game.screenshots.map((shot, index) => <li key={shot.src}>
+              <a href={root + shot.src} aria-label={t('Open screenshot: ', '查看截图：') + shot.alt[language]}>
+                <img src={root + shot.src} alt={shot.alt[language]} width="506" height="900"
+                  loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />
+              </a>
+            </li>)}
+          </ul>
+          {game.trailerUrl && <a className="button secondary trailer-link" href={game.trailerUrl}>
+            {t('Watch the gameplay trailer', '观看实机预告片')}
+          </a>}
+        </section>
+      </div>
     </section>
 
     <section className="section studio" aria-labelledby="features">
       <div className="container">
-        <h2 id="features">{t('Game features', '游戏特色')}</h2>
+        <h2 id="features">{t('How ArrowFlow plays', 'ArrowFlow 玩法')}</h2>
+        <p className="lead">{game.description[language]}</p>
+        <ul className="tags">
+          <li>{t('Free to play', '免费游玩')}</li>
+          <li>{t('Currently ad-free', '目前无广告')}</li>
+          <li>{t('Offline', '离线游玩')}</li>
+        </ul>
         <ul className="features">
           <li><h3>{t('100 puzzles', '100 个谜题')}</h3><p>{t('Start with simple boards and work up to more intricate routes.', '从简单棋盘开始，逐步挑战更复杂的路线。')}</p></li>
           <li><h3>{t('Tools for trickier boards', '复杂棋盘的辅助工具')}</h3><p>{t('Zoom in, pan around, or use a hint when you get stuck.', '可缩放和平移棋盘，遇到难题时也可以使用提示。')}</p></li>
