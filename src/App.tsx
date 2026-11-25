@@ -1,5 +1,4 @@
 import { Layout } from './components/Layout';
-import { ArrowDemo } from './components/ArrowDemo';
 import { GameplayHero } from './components/GameplayHero';
 import { games } from './data/games';
 import { site } from './data/site';
@@ -16,7 +15,7 @@ export default function App() {
           <p className="eyebrow studio-kicker"><span />{t('AXENOVA STUDIOS / FEATURED GAME', 'AXENOVA STUDIOS / 主打游戏')}</p>
           <h1>{featured.title}</h1>
           <p className="hero-tagline">{t('Every arrow has a way out.', '每个箭头都有一条出路。')}</p>
-          <p className="hero-description">{t('Tap arrows to slide them off the board. The trick is finding which one goes first.', '轻点箭头，让它们滑出棋盘。关键是找出哪个箭头该先走。')}</p>
+          <p className="hero-description">{t('Tap winding arrows to send them off the board. Find the right order to clear each maze.', '轻点曲折的箭头，让它们滑出棋盘。找出正确顺序，清空每个迷宫。')}</p>
         </div>
         {featured.heroGameplay && <GameplayHero gameplay={featured.heroGameplay} />}
         <div className="hero-cta">
@@ -25,7 +24,7 @@ export default function App() {
               <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3v18l15-9L5 3Z" /></svg>
               {t('Get it on Google Play', '在 Google Play 下载')}
             </a>}
-            <a className="button secondary" href="#try-puzzle">{t('Try a puzzle', '试玩谜题')} <span aria-hidden="true">↓</span></a>
+            {featured.detailPath && <a className="button secondary" href={featured.detailPath + '#gameplay'}>{t('See gameplay', '查看实机截图')} <span aria-hidden="true">↗</span></a>}
           </div>
           <ul className="hero-facts" aria-label={t('Game highlights', '游戏亮点')}>
             <li>{t('Free on Android', '安卓免费')}</li>
@@ -34,16 +33,6 @@ export default function App() {
           </ul>
         </div>
       </div>
-    </section>
-
-    <section id="try-puzzle" className="section container puzzle-section" tabIndex={-1}>
-      <div className="puzzle-copy">
-        <p className="eyebrow">{t('The ArrowFlow mini puzzle', 'ArrowFlow 迷你谜题')}</p>
-        <h2>{t('Which arrow goes first?', '哪个箭头先走？')}</h2>
-        <p>{t('Tap an arrow to send it in the direction it points. If another arrow is in the way, clear that one first. No download needed.', '轻点箭头，让它沿指向滑出。如果路上有其他箭头，先把挡路的箭头移开。无需下载。')}</p>
-        {featured.detailPath && <a className="puzzle-link" href={featured.detailPath}>{t('Explore the full game', '探索完整版')} <span aria-hidden="true">↗</span></a>}
-      </div>
-      <ArrowDemo />
     </section>
 
     <section id="games" className="section container" tabIndex={-1}>
