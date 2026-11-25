@@ -22,7 +22,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm install
+      - name: Set up APK verification tools when needed
+        shell: bash
+        run: |
+          if node -e 'process.exit(require("./src/data/apk.json") === null ? 1 : 0)'; then
+            sdkmanager "build-tools;35.0.0"
+            echo "$ANDROID_HOME/build-tools/35.0.0" >> "$GITHUB_PATH"
+          fi
+      - run: npm ci
       - run: npm run build
         env:
           VITE_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
@@ -32,6 +39,7 @@ jobs:
           path: dist
 
   deploy:
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     environment:
